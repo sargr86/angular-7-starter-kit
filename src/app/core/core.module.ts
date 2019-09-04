@@ -7,7 +7,7 @@ import {throwIfAlreadyLoaded} from './guards/module-imports.guard';
 @NgModule({
     declarations: [HeaderComponent, FooterComponent],
     imports: [
-        CommonModule
+        CommonModule,
     ],
     exports: [
         HeaderComponent,

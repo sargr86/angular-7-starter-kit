@@ -5,14 +5,12 @@ import {FooterComponent} from './components/footer/footer.component';
 import {throwIfAlreadyLoaded} from './guards/module-imports.guard';
 import {LoginComponent} from './components/login/login.component';
 import {RegisterComponent} from './components/register/register.component';
-import {MaterialModule} from './modules/material.module';
 import {SharedModule} from '../shared/shared.module';
 
 @NgModule({
     declarations: [HeaderComponent, FooterComponent, LoginComponent, RegisterComponent],
     imports: [
         CommonModule,
-        MaterialModule,
         SharedModule
     ],
     exports: [

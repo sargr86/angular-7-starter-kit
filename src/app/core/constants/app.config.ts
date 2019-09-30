@@ -1,3 +1,3 @@
-import {environment} from '../../../environments/environment';
+import {environment} from '@env/environment';
 
 export const API_URL = environment.url;

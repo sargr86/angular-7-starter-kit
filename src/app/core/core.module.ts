@@ -3,12 +3,13 @@ import {CommonModule} from '@angular/common';
 import {HeaderComponent} from './components/header/header.component';
 import {FooterComponent} from './components/footer/footer.component';
 import {throwIfAlreadyLoaded} from './guards/module-imports.guard';
-import {LoginComponent} from './components/login/login.component';
-import {RegisterComponent} from './components/register/register.component';
 import {SharedModule} from '../shared/shared.module';
 
 @NgModule({
-    declarations: [HeaderComponent, FooterComponent, LoginComponent, RegisterComponent],
+    declarations: [
+        HeaderComponent,
+        FooterComponent
+    ],
     imports: [
         CommonModule,
         SharedModule

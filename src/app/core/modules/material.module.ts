@@ -32,7 +32,10 @@ import {MatSliderModule} from '@angular/material/slider';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { MAT_RIPPLE_GLOBAL_OPTIONS, RippleGlobalOptions } from '@angular/material';
 
+
+const globalRippleConfig: RippleGlobalOptions = {disabled: true};
 @NgModule({
     imports: [
         CommonModule,
@@ -70,6 +73,7 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
     declarations: [],
     providers: [
         MatDialog,
+        {provide: MAT_RIPPLE_GLOBAL_OPTIONS, useValue: globalRippleConfig}
     ],
     exports: [
         MatToolbarModule,

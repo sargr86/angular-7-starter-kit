@@ -1,0 +1,19 @@
+<div class="{{appTheme}} mat-app-background">
+    <mat-toolbar>
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+            <i class="fa fa-cog"></i>
+        </button>
+        <mat-menu #menu="matMenu" class="{{appTheme}}">
+            <div class="themeToggler">
+                <small>Change theme</small>
+                <mat-divider></mat-divider>
+                <div class="togglerContainer">
+                    light
+                    <mat-slide-toggle color="primary" (change)="changeTheme()"
+                                      [checked]="appTheme==='dark'">dark
+                    </mat-slide-toggle>
+                </div>
+            </div>
+        </mat-menu>
+    </mat-toolbar>
+</div>

@@ -14,5 +14,13 @@ body {
 
 .mat-menu-panel {
   overflow: hidden !important;
+  border-radius: unset !important;
+}
+
+.mat-menu-content {
+  padding: 0 !important;
+  .mat-card{
+    border-radius: unset!important;
+  }
 }
 

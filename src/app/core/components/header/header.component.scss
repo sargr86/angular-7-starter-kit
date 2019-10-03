@@ -1,12 +1,19 @@
+nav {
+  position: sticky;
+  width: 100%;
+}
+
+
 .themeToggler {
   width: 280px;
 
   small {
-    margin-left: 10px;
+    margin-left: 2px;
   }
 
   .togglerContainer {
     text-align: right;
     padding-right: 10px;
+    margin-right: 14px;
   }
 }

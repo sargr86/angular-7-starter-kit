@@ -3,7 +3,16 @@ import {CommonModule} from '@angular/common';
 import {HeaderComponent} from './components/header/header.component';
 import {FooterComponent} from './components/footer/footer.component';
 import {throwIfAlreadyLoaded} from './guards/module-imports.guard';
-import {SharedModule} from '../shared/shared.module';
+import {SharedModule} from '@shared/shared.module';
+
+import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
+
+// AoT requires an exported function for factories
+export function createTranslateLoader(http: HttpClient) {
+    return new TranslateHttpLoader(http, './assets/languages/', '.json');
+}
 
 @NgModule({
     declarations: [
@@ -12,7 +21,15 @@ import {SharedModule} from '../shared/shared.module';
     ],
     imports: [
         CommonModule,
-        SharedModule
+        SharedModule,
+        HttpClientModule,
+        TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: createTranslateLoader,
+                deps: [HttpClient]
+            }
+        }),
     ],
     exports: [
         HeaderComponent,

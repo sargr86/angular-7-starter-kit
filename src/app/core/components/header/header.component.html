@@ -3,21 +3,19 @@
         <button mat-icon-button [matMenuTriggerFor]="menu">
             <i class="fa fa-cog"></i>
         </button>
-<!--        <div #menuTrigger="matMenuTrigger" [matMenuTriggerFor]="menu">-->
-            <mat-menu #menu="matMenu" class="{{appTheme}}">
-                <mat-card>
-                    <div class="themeToggler">
-                        <small>Theme</small>
-                        <mat-divider></mat-divider>
-                        <div class="togglerContainer">
-                            light
-                            <mat-slide-toggle color="primary" (change)="changeTheme()"
-                                              [checked]="appTheme==='dark'">dark
-                            </mat-slide-toggle>
-                        </div>
+        <mat-menu #menu="matMenu" class="{{appTheme}}">
+            <mat-card>
+                <div class="themeToggler">
+                    <small>Theme</small>
+                    <mat-divider></mat-divider>
+                    <div class="togglerContainer">
+                        light
+                        <mat-slide-toggle color="primary" (change)="changeTheme()"
+                                          [checked]="appTheme==='dark'">dark
+                        </mat-slide-toggle>
                     </div>
-                </mat-card>
-            </mat-menu>
-<!--        </div>-->
+                </div>
+            </mat-card>
+        </mat-menu>
     </mat-toolbar>
 </nav>

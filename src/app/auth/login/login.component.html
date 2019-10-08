@@ -18,9 +18,23 @@
                 </p>
 
                 <div class="button">
-                    <button mat-raised-button color="primary">
-                        Login
-                    </button>
+
+                    <div class="loginBtns">
+                        <a mat-icon-button [href]="apiUrl+'auth/facebook'" class="facebookLoginBtn">
+                            <i class="fab fa-facebook-square"></i>
+                        </a>
+                        <button mat-raised-button color="primary" (click)="login()">
+                            Login
+                        </button>
+                        <a mat-icon-button [href]="apiUrl+'auth/google'" class="googleLoginBtn">
+                            <i class="fab fa-google"></i>
+                        </a>
+                        <a mat-icon-button (click)="fbAuth()" class="fbAltBtn">
+                            <i class="fab fa-google"></i>
+                        </a>
+                    </div>
+
+
                 </div>
 
             </form>

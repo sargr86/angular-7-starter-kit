@@ -11,6 +11,12 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+// Back button in forms pages
+.backBtn {
+  min-width: 37px !important;
+  padding: 0 !important;
+  margin-right: 20px !important;
+}
 
 .mat-menu-panel {
   overflow: hidden !important;
@@ -19,8 +25,13 @@ body {
 
 .mat-menu-content {
   padding: 0 !important;
-  .mat-card{
-    border-radius: unset!important;
+
+  .mat-card {
+    border-radius: unset !important;
   }
+}
+
+.mat-form-field {
+  display: block !important;
 }
 

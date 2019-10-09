@@ -1,3 +1,50 @@
-<p>
-  register works!
-</p>
+<div class="formContainer">
+    <form [formGroup]="registerForm" class="registerForm">
+        <!-- User details box -->
+        <div class="userInfo">
+            <!-- First name field -->
+            <mat-form-field>
+                <input matInput [placeholder]="'First name'" [formControlName]="'first_name'" required>
+
+                <mat-error *ngIf="firstName.hasError('required')">First name is <strong>required</strong></mat-error>
+            </mat-form-field>
+
+            <!-- Last name field -->
+            <mat-form-field>
+                <input matInput [placeholder]="'Last Name'" [formControlName]="'last_name'" required>
+
+                <mat-error *ngIf="lastName.hasError('required')">Last name is <strong>required</strong></mat-error>
+            </mat-form-field>
+
+
+            <!-- Gender field -->
+            <mat-radio-group name="gender" formControlName="gender">
+                <mat-radio-button [value]="'male'">Male</mat-radio-button>
+                <mat-radio-button [value]="'female'">Female</mat-radio-button>
+            </mat-radio-group>
+
+            <!-- E-mail field -->
+            <mat-form-field>
+                <input matInput [placeholder]="'Email'" formControlName="email" required>
+                <mat-error [hidden]="!email.hasError('required')">E-mail is <strong>required</strong></mat-error>
+                <mat-error [hidden]="!email.hasError('patternInvalid')">E-mail is <strong>invalid</strong></mat-error>
+            </mat-form-field>
+
+            <!-- Password field (shown only in user registration case)-->
+            <mat-form-field>
+                <input [type]="!passHidden?'password':'text'" matInput [placeholder]="'Password'"
+                       formControlName="password" required>
+                <mat-slide-toggle class="passToggler" (change)="togglePass()"></mat-slide-toggle>
+                <mat-error [hidden]="!pass.hasError('required')">Password is <strong>required</strong></mat-error>
+            </mat-form-field>
+
+            <button type="button" mat-raised-button color="warn" class="backBtn" (click)="router.navigate([redirectUrl])">
+                <mat-icon>arrow_back</mat-icon>
+            </button>
+            <button mat-raised-button color="primary" (click)="register()">
+                Save
+            </button>
+            <!-- [disabled]="registerForm.invalid"-->
+        </div>
+    </form>
+</div>

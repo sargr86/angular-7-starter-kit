@@ -1,0 +1,68 @@
+.formContainer {
+  margin-top: 50px;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+
+  .registerForm {
+    max-width: 680px;
+    width: 100%;
+    /* Register/ save-user-info button */
+    .userInfo {
+      width: 40%;
+
+      .register {
+        //@include namedBtn;
+        margin: auto;
+      }
+
+      .register:disabled {
+        //background-color: $gray !important;
+      }
+
+      .mat-radio-group {
+        margin: 20px 0;
+        display: block;
+        text-align: center;
+
+        .mat-radio-button {
+          margin-left: 10px;
+        }
+      }
+
+
+    }
+
+    /* User profile image container */
+    .userImg {
+      width: 50%;
+      float: right;
+
+      .profileImg {
+        position: relative;
+        width: 400px;
+        height: 400px;
+        background-size: cover !important;
+
+        i {
+          position: absolute;
+          right: 2px;
+          //color: $white;
+          font-size: 20px;
+          cursor: pointer;
+        }
+      }
+    }
+
+    /* Password show/hide button (only for register form) */
+    .passToggler {
+      position: absolute;
+      right: 0;
+      top: 5px;
+      color: gray;
+      font-size: 17px;
+      cursor: pointer;
+    }
+
+  }
+}

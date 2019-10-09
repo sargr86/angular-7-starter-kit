@@ -1,6 +1,20 @@
 nav {
   position: sticky;
   width: 100%;
+
+  .leftGroup {
+    width: 20%;
+  }
+
+  .centerGroup {
+    width: 60%;
+  }
+
+  .rightGroup {
+    width: 20%;
+    display: flex;
+    justify-content: flex-end;
+  }
 }
 
 

@@ -21,6 +21,7 @@
     .loginBtns {
       display: flex;
       justify-content: space-around;
+      margin-top: 25px;
 
       .facebookLoginBtn, .googleLoginBtn {
         i {
@@ -35,6 +36,6 @@
   }
 }
 
-div.button, .mat-card-title {
+div.loginBtns, .mat-card-title {
   text-align: center;
 }

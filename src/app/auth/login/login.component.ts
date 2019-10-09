@@ -1,20 +1,25 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '@core/services/auth.service';
 import {API_URL} from '@core/constants/app.config';
+import {Subscription} from 'rxjs';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
     loginForm: FormGroup;
     apiUrl = API_URL;
 
+    subscriptions: Subscription[] = [];
+
     constructor(
         private fb: FormBuilder,
-        private auth: AuthService
+        public auth: AuthService,
+        public router: Router
     ) {
         this.loginForm = this.fb.group({
             email: ['', Validators.required],
@@ -26,14 +31,26 @@ export class LoginComponent implements OnInit {
     }
 
     fbAuth() {
-        this.auth.fbLogin(this.loginForm.value).subscribe(dt => {
+        this.subscriptions.push(
+            this.auth.fbLogin(this.loginForm.value).subscribe(dt => {
 
-        });
+            })
+        );
     }
 
     login() {
-        this.auth.login().subscribe(dt => {
+        this.subscriptions.push(
+            this.auth.login(this.loginForm.value).subscribe((dt: any) => {
 
-        });
+                // Saving token to browser local storage
+                localStorage.setItem('token', (dt.hasOwnProperty('token') ? dt.token : ''));
+
+                this.router.navigate(['/']);
+            })
+        );
+    }
+
+    ngOnDestroy() {
+        this.subscriptions.forEach(s => s.unsubscribe());
     }
 }

@@ -26,16 +26,16 @@ export class RegisterComponent implements OnInit {
         });
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.getAuthUserData();
     }
 
-    getAuthUserData() {
+    getAuthUserData(): void {
         const userData = jwtDecode(localStorage.getItem('token'));
         this.registerForm.patchValue(userData);
     }
 
-    togglePass() {
+    togglePass(): void {
         this.passHidden = !this.passHidden;
     }
 

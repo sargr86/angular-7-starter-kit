@@ -1,19 +1,21 @@
 import {NgModule, Optional, SkipSelf} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {HeaderComponent} from './components/header/header.component';
-import {FooterComponent} from './components/footer/footer.component';
 import {throwIfAlreadyLoaded} from './guards/module-imports.guard';
 import {SharedModule} from '@shared/shared.module';
 
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
-import {HomeComponent} from '@core/components/home/home.component';
+
+import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
+import {RequestInterceptor} from '@core/helpers/http.interceptor';
 
 import {JwtHelperService} from '@auth0/angular-jwt';
 import {JwtModule} from '@auth0/angular-jwt';
 import {ToastrModule} from 'ngx-toastr';
 
+import {HeaderComponent} from '@core/components/header/header.component';
+import {HomeComponent} from '@core/components/home/home.component';
+import {FooterComponent} from '@core/components/footer/footer.component';
 
 // AoT requires an exported function for factories
 export function createTranslateLoader(http: HttpClient) {
@@ -54,7 +56,12 @@ export function tokenGetter() {
         })
     ],
     providers: [
-        JwtHelperService
+        JwtHelperService,
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: RequestInterceptor,
+            multi: true
+        },
     ],
     exports: [
         HeaderComponent,
